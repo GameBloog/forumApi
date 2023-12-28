@@ -1,22 +1,22 @@
 import { QuestionComment } from "../../enterprise/entities/question-comment"
 import { QuestionCommentRepository } from "../repositories/question-comment-repository"
 
-interface FetchQuestioCommentsUseCaseRequest {
+interface FetchQuestionCommentsUseCaseRequest {
   questionId: string
   page: number
 }
 
-interface FetchQuestioCommentsUseCaseResponse {
+interface FetchQuestionCommentsUseCaseResponse {
   questionsComments: QuestionComment[]
 }
 
-export class FetchQuestioCommentsUseCase {
+export class FetchQuestionCommentsUseCase {
   constructor(private questionCommentRepository: QuestionCommentRepository) {}
 
   async execute({
     questionId,
     page,
-  }: FetchQuestioCommentsUseCaseRequest): Promise<FetchQuestioCommentsUseCaseResponse> {
+  }: FetchQuestionCommentsUseCaseRequest): Promise<FetchQuestionCommentsUseCaseResponse> {
     const questionsComments =
       await this.questionCommentRepository.findManyByQuestionId(questionId, {
         page,
