@@ -1,6 +1,5 @@
 import { Entity } from "@/core/entities/entity"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-import { extend } from "dayjs"
 
 export interface CommentProps {
   authorId: UniqueEntityID
