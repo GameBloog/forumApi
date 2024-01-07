@@ -6,15 +6,27 @@ import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 import { ChooseQuestionBestAnswerUseCase } from "./choose-question-best-answer"
 import { makeQuestion } from "test/factories/make-question"
 import { NotAllowedError } from "./errors/not-allowed-error"
+import { InMemoryAnswerAttachmentRepository } from "test/repositories/in-memory-answer-attachment-repository"
+import { InMemoryQuestionAttachmentRepository } from "test/repositories/in-memory-question-attachment-repository"
 
+let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository
+let inMemoryAnswerAttachmentRepository: InMemoryAnswerAttachmentRepository
 let inMemoryQuestionRepository: InMemoryQuestionsRepository
 let inMemoryAnswerRepository: InMemoryAnswerRepository
 let sut: ChooseQuestionBestAnswerUseCase
 
 describe("Choose Question Best Answer", () => {
   beforeEach(() => {
-    inMemoryAnswerRepository = new InMemoryAnswerRepository()
-    inMemoryQuestionRepository = new InMemoryQuestionsRepository()
+    inMemoryQuestionAttachmentRepository =
+      new InMemoryQuestionAttachmentRepository()
+    inMemoryAnswerAttachmentRepository =
+      new InMemoryAnswerAttachmentRepository()
+    inMemoryAnswerRepository = new InMemoryAnswerRepository(
+      inMemoryAnswerAttachmentRepository
+    )
+    inMemoryQuestionRepository = new InMemoryQuestionsRepository(
+      inMemoryQuestionAttachmentRepository
+    )
     sut = new ChooseQuestionBestAnswerUseCase(
       inMemoryQuestionRepository,
       inMemoryAnswerRepository
