@@ -2,7 +2,7 @@ import { InMemoryAnswerRepository } from "test/repositories/in-memory-answers-re
 import { makeAnswer } from "test/factories/make-answer"
 import { EditAnswerUseCase } from "./edit-answer"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-import { NotAllowedError } from "./errors/not-allowed-error"
+import { NotAllowedError } from "@/core/errors/errors/not-allowed-error"
 import { InMemoryAnswerAttachmentRepository } from "test/repositories/in-memory-answer-attachment-repository"
 import { makeAnswerAttachment } from "test/factories/make-answer-attachment"
 
@@ -13,7 +13,7 @@ let sut: EditAnswerUseCase
 describe("Edit Answer", () => {
   beforeEach(() => {
     inMemoryAnswerAttachmentRepository =
-    new InMemoryAnswerAttachmentRepository()
+      new InMemoryAnswerAttachmentRepository()
     inMemoryAnswerRepository = new InMemoryAnswerRepository(
       inMemoryAnswerAttachmentRepository
     )

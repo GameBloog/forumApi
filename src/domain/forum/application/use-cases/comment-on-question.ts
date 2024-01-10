@@ -3,7 +3,7 @@ import { QuestionComment } from "../../enterprise/entities/question-comment"
 import { QuestionCommentRepository } from "../repositories/question-comment-repository"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 import { Either, left, rigth } from "@/core/either"
-import { ResourceNotFoundError } from "./errors/resource-not-found-error"
+import { ResourceNotFoundError } from "@/core/errors/errors/resource-not-found-error"
 
 interface CommentOnQuestionUseCaseRequest {
   authorId: string
