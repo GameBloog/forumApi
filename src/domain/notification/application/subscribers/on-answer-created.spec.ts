@@ -26,7 +26,7 @@ let sendNotificationExeuteSpy: MockInstance<
   Promise<SendNotificationUseCaseResponse>
 >
 
-describe("On answer Created", () => {
+describe("On Answer Created", () => {
   beforeEach(() => {
     inMemoryQuestionAttachmentRepository =
       new InMemoryQuestionAttachmentRepository()
